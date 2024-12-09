@@ -1,0 +1,11 @@
+10,19
+             xxxxx 
+             xxxx  
+              xx   
+      xx         x 
+      x  x     o xx
+         xx      xx
+   rrR       xxxxxx
+  xxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxx

@@ -1,0 +1,11 @@
+10,19
+             xxxxx 
+             xxxx  
+   ppP        xx   
+   ggGxx         x 
+   yyYx  x     o xx
+   bbB   xx  @  Oxx
+   rrR * ^^  xxxxxx
+  xxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxx
