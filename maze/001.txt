@@ -1,11 +1,11 @@
 10,19
                           xxxxxxxxxx  
                           xxxxxxxx    
-      p2p1P0                xxxx      
-      g2g1G0xxxx                  xx  
-      y2y1Y0xx    xx          oo  xxxx
-      b2b1B0      xxxx    @@    OOxxxx
-      r2r1R0  **  ^^^^    xxxxxxxxxxxx
+                            xxxx      
+            xxxx                  xx  
+            xx    xx          oo  xxxx
+                  xxxx            xxxx
+    r2r1r0R0  **          xxxxxxxxxxxx
     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -1,11 +1,11 @@
 10,19
-             xxxxx 
-             xxxx  
-              xx   
-      xx         x 
-      x  x     o xx
-         xx      xx
-   rrR       xxxxxx
-  xxxxxxxxxxxxxxxxx
- xxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxx
+                          xxxxxxxxxx  
+                  ++      xxxxxxxx    
+      p1p0P0      ||        xxxx      
+      g1g0G0xxxx  ++--++          xx  
+      y1y0Y0xx    xx          oo  xxxx
+      b1b0B0      xxxx    @@    OOxxxx
+      r1r0R0  **  ^^^^    xxxxxxxxxxxx
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

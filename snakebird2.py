@@ -2,6 +2,7 @@ import os
 import pygame
 import maze
 from colors import colors
+from bird import Bird
 
 GRID_WIDTH = 40
 
@@ -10,13 +11,16 @@ FILES_PER_ROW = 5
 # init
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("蛇鸟")
+pygame.display.set_caption("")
+# pygame.display.set_caption("蛇鸟")
 clock = pygame.time.Clock()
-FPS = 30
+FPS = 1
 
 # variables
 welcome = True
 base_folder = os.path.dirname(__file__)
+birds_name = []
+birds = {}
 
 # fonts
 font_name = os.path.join(base_folder, '方圆体.ttc')
@@ -59,13 +63,44 @@ def load_maze_from_file(filename):
     maze_data = []
     for line in lines[1:]:
       maze_data.append(list(line))
+    for i in range(len(maze_data)):
+      for j in range(len(maze_data[i])):
+        if maze_data[i][j] in ['r', 'R', 'b', 'B', 'y', 'Y', 'g', 'G', 'p', 'P']:
+          name = maze_data[i][j]
+          if name.upper() not in birds_name:
+            birds_name.append(name.upper())
+            bird = Bird(name.upper())
+            birds[name.upper()] = bird
+          else:
+            bird = birds[name.upper()]
+          if name.islower():
+            bird.add_body((i, j), int(maze_data[i][j+1]))
+          else:
+            bird.set_head((i, j))
+          maze_data[i][j], maze_data[i][j+1] = ' ', ' '
+          ...
+    print(birds[birds_name[0]].to_string())
   return row_count, col_count, maze_data
 
-def draw_matrix(rows, cols, screen_matrix):
-  for i, row in zip(range(rows), screen_matrix):
-    for j, color in zip(range(cols), row):
+def draw_matrix(screen, rows, cols, matrix):
+  for i, row in zip(range(rows), matrix):
+    for j, code in zip(range(cols), row):
+      if type(code) == str:
+        color = colors[code]
+      else:
+        color = code
       if color is not None:
+        # print('position:',i,',',j,'color:',color)
         pygame.draw.rect(screen, color, (j * GRID_WIDTH, i * GRID_WIDTH, GRID_WIDTH, GRID_WIDTH))
+        if code  == '@@':
+          show_text(screen, font_file, code[0], j * GRID_WIDTH + GRID_WIDTH // 2, i * GRID_WIDTH + 2 )
+        elif code == 'oo':
+          show_text(screen, font_file, code[0], j * GRID_WIDTH + GRID_WIDTH // 2, i * GRID_WIDTH )
+        elif code == '^^':
+          show_text(screen, font_file, code[0], j * GRID_WIDTH + GRID_WIDTH // 2, i * GRID_WIDTH + GRID_WIDTH // 2)
+        elif code == '**':
+          show_text(screen, font_file, code[0], j * GRID_WIDTH + GRID_WIDTH // 2, i * GRID_WIDTH + GRID_WIDTH // 4)
+      
 
 running = True
 maze_files = get_maze_files()
@@ -87,11 +122,11 @@ while running:
         if event.key == pygame.K_RETURN:
           filename = f"maze/{maze_files[5 * selected_row + selected_col]}.txt"
           rows, cols, maze_data = load_maze_from_file(filename)
-          screen = pygame.display.set_mode((cols * GRID_WIDTH, rows * GRID_WIDTH))
-          screen_matrix = [[None] * cols for i in range(rows)]
+          screen = pygame.display.set_mode((cols * GRID_WIDTH, rows * GRID_WIDTH + 30 + GRID_WIDTH))
+          matrix = [[None] * cols for i in range(rows)]
           for row in range(rows):
             for col in range(cols):
-              screen_matrix[row][col] = colors[maze_data[row][2*col]+maze_data[row][2*col+1]]
+              matrix[row][col] = maze_data[row][2*col]+maze_data[row][2*col+1]
           welcome = False
         elif event.key == pygame.K_UP or event.key == pygame.K_w:
           selected_row = max(0, selected_row - 1)
@@ -115,7 +150,7 @@ while running:
   if welcome:
     show_welcome(screen, files_2d, selected_row, selected_col)
   else:
-    draw_matrix(rows, cols, screen_matrix)
+    draw_matrix(screen, rows, cols, matrix)
   pygame.display.update()
 
         
